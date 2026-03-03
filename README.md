@@ -1,1 +1,1 @@
-Ich bin die Globale REad Me
+Ich bin die Globale REad Me als test
