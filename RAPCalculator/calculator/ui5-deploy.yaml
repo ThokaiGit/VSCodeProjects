@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: calculator
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://mmc-s4sap06.mmc.1stbasis.com:44300
+          client: '280'
+        app:
+          name: YBITS_CALCV1
+          description: RAP Calculator Manged no Draft
+          package: YBITS_TKA_CALC
+          transport: S23K906770
+        exclude:
+          - /test/

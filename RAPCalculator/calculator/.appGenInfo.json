@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Mar 02 2026 16:50:24 GMT+0100 (Central European Standard Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://mmc-s4sap06.mmc.1stbasis.com:44300/sap/opu/odata/sap/YBITS_TKA_UI_CALC_H_02",
+    "appName": "calculator",
+    "appTitle": "My first Calculatzor",
+    "appDescription": "My first RAP Application",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.114.9",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.4",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "SessionV1"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "to_Aufgaben"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
