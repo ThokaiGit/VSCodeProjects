@@ -266,6 +266,9 @@
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/checkResultSingle_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/validateZahlenAct_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/Operant_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>

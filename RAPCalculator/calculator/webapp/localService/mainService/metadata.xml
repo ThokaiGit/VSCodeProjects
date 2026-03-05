@@ -85,6 +85,7 @@
                 </Key>
                 <Property Name="checkResult_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="checkResultSingle_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="validateZahlenAct_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Operant_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ResultIn_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Zahl1_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -423,6 +424,10 @@
                     <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="SessionItemId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                 </FunctionImport>
+                <FunctionImport Name="validateZahlenAct" ReturnType="cds_ybits_tka_ui_calc_h.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.AufgabenV1Type" sap:applicable-path="validateZahlenAct_ac">
+                    <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="SessionItemId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                </FunctionImport>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -482,6 +487,19 @@
                         <PropertyValue Property="TargetProperties">
                             <Collection>
                                 <String>Sucessfull</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Determine_Action_validateZahlenAct">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TriggerAction" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/validateZahlenAct"/>
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>Zahl1</PropertyPath>
+                                <PropertyPath>Zahl2</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -563,6 +581,7 @@
                             <Collection>
                                 <PropertyPath>checkResult_ac</PropertyPath>
                                 <PropertyPath>checkResultSingle_ac</PropertyPath>
+                                <PropertyPath>validateZahlenAct_ac</PropertyPath>
                                 <PropertyPath>Operant_fc</PropertyPath>
                                 <PropertyPath>ResultIn_fc</PropertyPath>
                                 <PropertyPath>Zahl1_fc</PropertyPath>
@@ -598,6 +617,7 @@
                             <Collection>
                                 <PropertyPath>checkResult_ac</PropertyPath>
                                 <PropertyPath>checkResultSingle_ac</PropertyPath>
+                                <PropertyPath>validateZahlenAct_ac</PropertyPath>
                                 <PropertyPath>Operant_fc</PropertyPath>
                                 <PropertyPath>ResultIn_fc</PropertyPath>
                                 <PropertyPath>Zahl1_fc</PropertyPath>
