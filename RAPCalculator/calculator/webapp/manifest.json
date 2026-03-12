@@ -54,6 +54,16 @@
             "parameters": {},
             "additionalParameters": "allowed"
           }
+        },
+        "YBTCALC_2-display": {
+          "semanticObject": "YBTCALC_2",
+          "action": "display",
+          "title": "{{YBTCALC_2-display.flpTitle}}",
+          "subTitle": "{{YBTCALC_2-display.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
