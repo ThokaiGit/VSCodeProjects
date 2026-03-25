@@ -92,21 +92,29 @@
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/to_Aufgaben_oc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/to_YYExcelHeader_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type">
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Prozess Data"/>
                             <PropertyValue Property="ID" String="SessionDaten"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
                         </Record>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Calculating Task's"/>
                             <PropertyValue Property="ID" String="ItemDaten"/>
                             <PropertyValue Property="Target" AnnotationPath="to_Aufgaben/@UI.LineItem"/>
                         </Record>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Excel Header"/>
+                            <PropertyValue Property="ID" String="ExcelHeaderTable"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_YYExcelHeader/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Footer"/>
                             <PropertyValue Property="ID" String="FOOTER"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FOOTER"/>
                         </Record>
@@ -115,7 +123,7 @@
                 <Annotation Term="UI.HeaderFacets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Administrative Data"/>
                             <PropertyValue Property="ID" String="AdminDaten"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
@@ -158,11 +166,11 @@
                 </Annotation>
                 <Annotation Term="UI.HeaderInfo">
                     <Record>
-                        <PropertyValue Property="TypeName" String=""/>
-                        <PropertyValue Property="TypeNamePlural" String=""/>
+                        <PropertyValue Property="TypeName" String="Calculator session"/>
+                        <PropertyValue Property="TypeNamePlural" String="Calculator session"/>
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Label" String=""/>
+                                <PropertyValue Property="Label" String="Description"/>
                                 <PropertyValue Property="Value" Path="SessionText"/>
                             </Record>
                         </PropertyValue>
@@ -179,15 +187,15 @@
                             <PropertyValue Property="Value" Path="SessionOrg"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Count Tasks"/>
                             <PropertyValue Property="Value" Path="AnzAufgaben"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Checked"/>
                             <PropertyValue Property="Value" Path="Checked"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Sucessfully checked"/>
                             <PropertyValue Property="Value" Path="Sucessfull"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -206,16 +214,16 @@
                             <PropertyValue Property="Value" Path="SessionOrg"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Count Tasks"/>
                             <PropertyValue Property="Value" Path="AnzAufgaben"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Checked"/>
                             <PropertyValue Property="Value" Path="Checked"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Sucessfully checked"/>
                             <PropertyValue Property="Value" Path="Sucessfull"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
@@ -291,7 +299,7 @@
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Task's"/>
                             <PropertyValue Property="ID" String="Aufgabe"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
                         </Record>
@@ -302,11 +310,11 @@
                         <PropertyValue Property="Data">
                             <Collection>
                                 <Record Type="UI.DataField">
-                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Label" String="Correct"/>
                                     <PropertyValue Property="Value" Path="Sucessfull"/>
                                 </Record>
                                 <Record Type="UI.DataField">
-                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Label" String="Checked"/>
                                     <PropertyValue Property="Value" Path="Checked"/>
                                 </Record>
                             </Collection>
@@ -335,11 +343,11 @@
                 </Annotation>
                 <Annotation Term="UI.HeaderInfo">
                     <Record>
-                        <PropertyValue Property="TypeName" String=""/>
-                        <PropertyValue Property="TypeNamePlural" String=""/>
+                        <PropertyValue Property="TypeName" String="Task"/>
+                        <PropertyValue Property="TypeNamePlural" String="Task's"/>
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Label" String=""/>
+                                <PropertyValue Property="Label" String="Label Test"/>
                                 <PropertyValue Property="Value" Path="Aufgabe"/>
                             </Record>
                         </PropertyValue>
@@ -348,7 +356,7 @@
                 <Annotation Term="UI.Identification">
                     <Collection>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Task"/>
                             <PropertyValue Property="Value" Path="Aufgabe"/>
                             <Annotation Term="UI.Hidden"/>
                         </Record>
@@ -365,11 +373,11 @@
                             <PropertyValue Property="Value" Path="ResultIn"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Checked"/>
                             <PropertyValue Property="Value" Path="Checked"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Sucessfully checked"/>
                             <PropertyValue Property="Value" Path="Sucessfull"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -385,12 +393,12 @@
                             <PropertyValue Property="Value" Path="ChangeDatLocal"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Check Result"/>
                             <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/checkResult"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Check Result Single"/>
                             <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/checkResultSingle"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                         </Record>
@@ -399,7 +407,7 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Task"/>
                             <PropertyValue Property="Value" Path="Aufgabe"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -415,15 +423,15 @@
                             <PropertyValue Property="Value" Path="ResultIn"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Checked"/>
                             <PropertyValue Property="Value" Path="Checked"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Sucessfully checked"/>
                             <PropertyValue Property="Value" Path="Sucessfull"/>
                         </Record>
                         <Record Type="UI.DataFieldForAnnotation">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Admin Data fieldGroup (creted, changed)"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminData"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
@@ -431,12 +439,12 @@
                             <PropertyValue Property="Value" Path="ChangeDatLocal"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Check Result Single"/>
                             <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/checkResultSingle"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Label" String="Check Result"/>
                             <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/checkResult"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                             <PropertyValue Property="Inline" Bool="true"/>
@@ -460,6 +468,208 @@
                         <PropertyPath>Sucessfull</PropertyPath>
                         <PropertyPath>Checked</PropertyPath>
                         <PropertyPath>CreateBy</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/SessionId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/ExcelId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/CreateBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/CreateAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/ChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Attachment_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Filename_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Mimetype_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/to_YYExcelItem_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Administrative Daten"/>
+                            <PropertyValue Property="ID" String="AdminDaten"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Attachment Data"/>
+                            <PropertyValue Property="ID" String="AttachmentData"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AttachmentData"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Excel Items"/>
+                            <PropertyValue Property="ID" String="ExcelItems"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_YYExcelItem/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="AdminDaten">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ChangedBy"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ChangeDatLocal"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="AttachmentData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="$value"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Filename"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="FileStatus"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Excel Header"/>
+                        <PropertyValue Property="TypeNamePlural" String="Excel Header"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Filename"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="$value"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Filename"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FileStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ChangedBy"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ChangeDatLocal"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/SessionId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ExcelId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ExcelItemId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/CreateBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/CreateAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ChangeDatLocal">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Excel Aufagben"/>
+                            <PropertyValue Property="ID" String="ExcelAufgabe"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Migrate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Migrated"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Zahl1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Operant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Zahl2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ResultIn"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Migrate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Migrated"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Zahl1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Operant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Zahl2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ResultIn"/>
+                        </Record>
                     </Collection>
                 </Annotation>
             </Annotations>

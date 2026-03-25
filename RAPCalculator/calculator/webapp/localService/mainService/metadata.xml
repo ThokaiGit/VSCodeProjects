@@ -53,7 +53,7 @@
                 <Property Name="Appval" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BelongsToApp" sap:quickinfo="DD: Defines whether value of appender belongs to append"/>
                 <Property Name="DomeValueText" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
-            <EntityType Name="SessionV1Type" sap:content-version="1">
+            <EntityType Name="SessionV1Type" sap:label="Projection View Calculator Header" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="SessionId"/>
                 </Key>
@@ -64,9 +64,10 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_Aufgaben_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_YYExcelHeader_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SessionText" Type="Edm.String" MaxLength="100" sap:label=""/>
-                <Property Name="SessionOrg" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label=""/>
+                <Property Name="SessionText" Type="Edm.String" MaxLength="100" sap:label="Session" sap:quickinfo="Calulator Session Text"/>
+                <Property Name="SessionOrg" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Calc. Organisation" sap:quickinfo="Calculator Organisation"/>
                 <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User" sap:creatable="false" sap:updatable="false"/>
@@ -75,10 +76,11 @@
                 <Property Name="AnzAufgaben" Type="Edm.Int32" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Checked" Type="Edm.Byte" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Sucessfull" Type="Edm.Byte" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ProzentErfolgreich" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ProzentErfolgreich" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="% richtig" sap:quickinfo="Erfolgreiche Lösungen in Prozent" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_Aufgaben" Relationship="cds_ybits_tka_ui_calc_h.assoc_0FADA0886B665943250361550E01B52A" FromRole="FromRole_assoc_0FADA0886B665943250361550E01B52A" ToRole="ToRole_assoc_0FADA0886B665943250361550E01B52A"/>
+                <NavigationProperty Name="to_YYExcelHeader" Relationship="cds_ybits_tka_ui_calc_h.assoc_DDCBD430D9D054A4DD39A84653B1557D" FromRole="FromRole_assoc_DDCBD430D9D054A4DD39A84653B1557D" ToRole="ToRole_assoc_DDCBD430D9D054A4DD39A84653B1557D"/>
             </EntityType>
-            <EntityType Name="AufgabenV1Type" sap:content-version="1">
+            <EntityType Name="AufgabenV1Type" sap:label="Projection View Calculator Item" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="SessionId"/>
                     <PropertyRef Name="SessionItemId"/>
@@ -95,10 +97,10 @@
                 <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SessionItemId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Aufgabe" Type="Edm.Byte" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl1_fc" sap:label=""/>
-                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="Operant_fc" sap:label="" sap:value-list="standard"/>
-                <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl2_fc" sap:label=""/>
-                <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="ResultIn_fc" sap:label=""/>
+                <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl1_fc" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
+                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="Operant_fc" sap:label="Operand" sap:quickinfo="Calculator Operant" sap:value-list="standard"/>
+                <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl2_fc" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
+                <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="ResultIn_fc" sap:label="Result" sap:quickinfo="Calculator Resultat"/>
                 <Property Name="Checked" Type="Edm.Boolean" sap:label="Indicator" sap:quickinfo="General Flag" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Sucessfull" Type="Edm.Boolean" sap:label="Indicator" sap:quickinfo="General Flag" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
@@ -107,6 +109,55 @@
                 <Property Name="ChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ChangeDatLocal" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_Session" Relationship="cds_ybits_tka_ui_calc_h.assoc_0FADA0886B665943250361550E01B52A" FromRole="ToRole_assoc_0FADA0886B665943250361550E01B52A" ToRole="FromRole_assoc_0FADA0886B665943250361550E01B52A"/>
+            </EntityType>
+            <EntityType Name="YYExcelHeaderType" m:HasStream="true" sap:label="Projection View Excel Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SessionId"/>
+                    <PropertyRef Name="ExcelId"/>
+                </Key>
+                <Property Name="Attachment_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mimetype_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_YYExcelItem_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ExcelId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Mimetype" Type="Edm.String" MaxLength="128" sap:field-control="Mimetype_fc" sap:label="Mime Type" sap:quickinfo="Excel Mime Type"/>
+                <Property Name="Filename" Type="Edm.String" MaxLength="128" sap:field-control="Filename_fc" sap:label="File Name" sap:quickinfo="Excel File Name"/>
+                <Property Name="FileStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="File status" sap:quickinfo="Calculator Excel File Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreateAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangeDatLocal" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Session" Relationship="cds_ybits_tka_ui_calc_h.assoc_DDCBD430D9D054A4DD39A84653B1557D" FromRole="ToRole_assoc_DDCBD430D9D054A4DD39A84653B1557D" ToRole="FromRole_assoc_DDCBD430D9D054A4DD39A84653B1557D"/>
+                <NavigationProperty Name="to_YYExcelItem" Relationship="cds_ybits_tka_ui_calc_h.assoc_A0048FA4859E20C1F5F05BCC80180AFD" FromRole="FromRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD" ToRole="ToRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD"/>
+            </EntityType>
+            <EntityType Name="YYExcelItemType" sap:label="Projection View Excel Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SessionId"/>
+                    <PropertyRef Name="ExcelId"/>
+                    <PropertyRef Name="ExcelItemId"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ExcelId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ExcelItemId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
+                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Operand" sap:quickinfo="Calculator Operant"/>
+                <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
+                <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Result" sap:quickinfo="Calculator Resultat"/>
+                <Property Name="Migrate" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Migration relevant" sap:quickinfo="Excel Migration relevant"/>
+                <Property Name="Migrated" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Migrated"/>
+                <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreateAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangeDatLocal" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_YYExcelHeader" Relationship="cds_ybits_tka_ui_calc_h.assoc_A0048FA4859E20C1F5F05BCC80180AFD" FromRole="ToRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD" ToRole="FromRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD"/>
+                <NavigationProperty Name="to_Session" Relationship="cds_ybits_tka_ui_calc_h.assoc_5BFA23572FA0405D2648AD0EE6073215" FromRole="FromRole_assoc_5BFA23572FA0405D2648AD0EE6073215" ToRole="ToRole_assoc_5BFA23572FA0405D2648AD0EE6073215"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -242,6 +293,20 @@
             <ComplexType Name="SAP__HeaderFooterField">
                 <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </ComplexType>
+            <Association Name="assoc_DDCBD430D9D054A4DD39A84653B1557D" sap:content-version="1">
+                <End Type="cds_ybits_tka_ui_calc_h.SessionV1Type" Multiplicity="1" Role="FromRole_assoc_DDCBD430D9D054A4DD39A84653B1557D">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" Multiplicity="*" Role="ToRole_assoc_DDCBD430D9D054A4DD39A84653B1557D"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_DDCBD430D9D054A4DD39A84653B1557D">
+                        <PropertyRef Name="SessionId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_DDCBD430D9D054A4DD39A84653B1557D">
+                        <PropertyRef Name="SessionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <Association Name="assoc_0FADA0886B665943250361550E01B52A" sap:content-version="1">
                 <End Type="cds_ybits_tka_ui_calc_h.SessionV1Type" Multiplicity="1" Role="FromRole_assoc_0FADA0886B665943250361550E01B52A">
                     <OnDelete Action="Cascade"/>
@@ -352,6 +417,34 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="assoc_5BFA23572FA0405D2648AD0EE6073215" sap:content-version="1">
+                <End Type="cds_ybits_tka_ui_calc_h.YYExcelItemType" Multiplicity="1" Role="FromRole_assoc_5BFA23572FA0405D2648AD0EE6073215"/>
+                <End Type="cds_ybits_tka_ui_calc_h.SessionV1Type" Multiplicity="0..1" Role="ToRole_assoc_5BFA23572FA0405D2648AD0EE6073215"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5BFA23572FA0405D2648AD0EE6073215">
+                        <PropertyRef Name="SessionId"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5BFA23572FA0405D2648AD0EE6073215">
+                        <PropertyRef Name="SessionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_A0048FA4859E20C1F5F05BCC80180AFD" sap:content-version="1">
+                <End Type="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" Multiplicity="1" Role="FromRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_ybits_tka_ui_calc_h.YYExcelItemType" Multiplicity="*" Role="ToRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD">
+                        <PropertyRef Name="ExcelId"/>
+                        <PropertyRef Name="SessionId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD">
+                        <PropertyRef Name="ExcelId"/>
+                        <PropertyRef Name="SessionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <EntityContainer Name="cds_ybits_tka_ui_calc_h_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
                 <EntitySet Name="SAP__Currencies" EntityType="cds_ybits_tka_ui_calc_h.SAP__Currency" sap:content-version="1"/>
                 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_ybits_tka_ui_calc_h.SAP__UnitOfMeasure" sap:content-version="1"/>
@@ -368,6 +461,8 @@
                 <EntitySet Name="ybits_domain_VH" EntityType="cds_ybits_tka_ui_calc_h.ybits_domain_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="SessionV1" EntityType="cds_ybits_tka_ui_calc_h.SessionV1Type" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="AufgabenV1" EntityType="cds_ybits_tka_ui_calc_h.AufgabenV1Type" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="YYExcelHeader" EntityType="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="YYExcelItem" EntityType="cds_ybits_tka_ui_calc_h.YYExcelItemType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <AssociationSet Name="to_FooterSet" Association="cds_ybits_tka_ui_calc_h.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
                     <End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/>
@@ -387,6 +482,18 @@
                 <AssociationSet Name="to_tablecolumnsSet" Association="cds_ybits_tka_ui_calc_h.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
                     <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5BFA23572FA0405D2648AD0EE6073215" Association="cds_ybits_tka_ui_calc_h.assoc_5BFA23572FA0405D2648AD0EE6073215" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YYExcelItem" Role="FromRole_assoc_5BFA23572FA0405D2648AD0EE6073215"/>
+                    <End EntitySet="SessionV1" Role="ToRole_assoc_5BFA23572FA0405D2648AD0EE6073215"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A0048FA4859E20C1F5F05BCC80180AFD" Association="cds_ybits_tka_ui_calc_h.assoc_A0048FA4859E20C1F5F05BCC80180AFD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YYExcelHeader" Role="FromRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD"/>
+                    <End EntitySet="YYExcelItem" Role="ToRole_assoc_A0048FA4859E20C1F5F05BCC80180AFD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DDCBD430D9D054A4DD39A84653B1557D" Association="cds_ybits_tka_ui_calc_h.assoc_DDCBD430D9D054A4DD39A84653B1557D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SessionV1" Role="FromRole_assoc_DDCBD430D9D054A4DD39A84653B1557D"/>
+                    <End EntitySet="YYExcelHeader" Role="ToRole_assoc_DDCBD430D9D054A4DD39A84653B1557D"/>
                 </AssociationSet>
                 <AssociationSet Name="to_signatureSet" Association="cds_ybits_tka_ui_calc_h.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
@@ -538,7 +645,7 @@
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/Operant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="Label" String="Operand"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="ybits_domain_VH"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
@@ -562,10 +669,31 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AcceptableMediaTypes">
+                    <Collection>
+                        <String>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</String>
+                        <String>application/vnd.ms-excel</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__core.ContentDisposition">
+                    <Record>
+                        <PropertyValue Property="Filename" Path="Filename"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" Path="Attachment_fc"/>
+                <Annotation Term="SAP__core.MediaType" Path="Mimetype"/>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/to_Aufgaben" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/to_YYExcelHeader" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/to_YYExcelItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/SessionOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -641,6 +769,7 @@
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_Aufgaben_oc</PropertyPath>
+                                <PropertyPath>to_YYExcelHeader_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -654,6 +783,14 @@
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Path="to_Aufgaben_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_YYExcelHeader"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_YYExcelHeader_oc"/>
                                         </Record>
                                     </PropertyValue>
                                 </Record>
@@ -677,10 +814,122 @@
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_Aufgaben_oc</PropertyPath>
+                                <PropertyPath>to_YYExcelHeader_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/YYExcelHeader" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Attachment_fc</PropertyPath>
+                                <PropertyPath>Filename_fc</PropertyPath>
+                                <PropertyPath>Mimetype_fc</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_YYExcelItem_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Session"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_YYExcelItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_YYExcelItem_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>ChangeDatLocal</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Attachment_fc</PropertyPath>
+                                <PropertyPath>Filename_fc</PropertyPath>
+                                <PropertyPath>Mimetype_fc</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_YYExcelItem_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/YYExcelItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Session"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_YYExcelHeader"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Mimetype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.IsMediaType"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">

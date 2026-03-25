@@ -178,6 +178,22 @@
                 "component": {
                   "name": "sap.suite.ui.generic.template.ObjectPage"
                 }
+              },
+              "ObjectPage|YYExcelHeader": {
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                },
+                "entitySet": "YYExcelHeader",
+                "navigationProperty": "to_YYExcelHeader",
+                "pages": {
+                  "ObjectPage|YYExcelItem": {
+                    "component": {
+                      "name": "sap.suite.ui.generic.template.ObjectPage"
+                    },
+                    "entitySet": "YYExcelItem",
+                    "navigationProperty": "to_YYExcelItem"
+                  }
+                }
               }
             }
           }
