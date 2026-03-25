@@ -96,6 +96,16 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Administrative Data"/>
+                            <PropertyValue Property="ID" String="AdminDaten"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
@@ -117,16 +127,6 @@
                             <PropertyValue Property="Label" String="Footer"/>
                             <PropertyValue Property="ID" String="FOOTER"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FOOTER"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="Administrative Data"/>
-                            <PropertyValue Property="ID" String="AdminDaten"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -564,6 +564,7 @@
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
                                 <PropertyValue Property="Label" String="Filename"/>
+                                <PropertyValue Property="Value" Path="Filename"/>
                             </Record>
                         </PropertyValue>
                     </Record>
@@ -586,6 +587,18 @@
                             <PropertyValue Property="Value" Path="ChangeDatLocal"/>
                         </Record>
                     </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="FileStatus"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/SessionId">
@@ -627,6 +640,15 @@
                             <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
                         </Record>
                     </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Excel Aufgaben"/>
+                        <PropertyValue Property="TypeNamePlural" String="Excel Aufgaben"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField"/>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
                 <Annotation Term="UI.Identification">
                     <Collection>
