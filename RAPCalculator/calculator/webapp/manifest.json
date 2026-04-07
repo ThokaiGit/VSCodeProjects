@@ -152,15 +152,17 @@
           "settings": {
             "condensedTableLayout": true,
             "smartVariantManagement": true,
-            "enableTableFilterInPageVariant": true,
             "filterSettings": {
               "dateSettings": {
                 "useDateRange": true
               }
             },
             "tableSettings": {
-              "type": "ResponsiveTable"
-            }
+              "type": "ResponsiveTable",
+              "selectAll": true,
+              "multiSelect": true
+            },
+            "enableTableFilterInPageVariant": true
           }
         },
         "pages": {
@@ -168,7 +170,23 @@
             "entitySet": "SessionV1",
             "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
             "component": {
-              "name": "sap.suite.ui.generic.template.ObjectPage"
+              "name": "sap.suite.ui.generic.template.ObjectPage",
+              "settings": {
+                "sections": {
+                  "ItemDaten": {
+                    "tableSettings": {
+                      "multiSelect": true,
+                      "selectAll": true
+                    }
+                  },
+                  "ExcelHeaderTable": {
+                    "tableSettings": {
+                      "multiSelect": true,
+                      "selectAll": true
+                    }
+                  }
+                }
+              }
             },
             "pages": {
               "ObjectPage|to_Aufgaben": {
@@ -181,7 +199,17 @@
               },
               "ObjectPage|YYExcelHeader": {
                 "component": {
-                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                  "name": "sap.suite.ui.generic.template.ObjectPage",
+                  "settings": {
+                    "sections": {
+                      "ExcelItems": {
+                        "tableSettings": {
+                          "multiSelect": true,
+                          "selectAll": true
+                        }
+                      }
+                    }
+                  }
                 },
                 "entitySet": "YYExcelHeader",
                 "navigationProperty": "to_YYExcelHeader",
