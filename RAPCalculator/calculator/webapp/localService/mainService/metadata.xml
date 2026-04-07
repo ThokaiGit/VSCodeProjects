@@ -65,6 +65,7 @@
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_Aufgaben_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_YYExcelHeader_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="YYcreExcelHeader_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SessionText" Type="Edm.String" MaxLength="100" sap:label="Session" sap:quickinfo="Calulator Session Text"/>
                 <Property Name="SessionOrg" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Calc. Organisation" sap:quickinfo="Calculator Organisation"/>
@@ -98,7 +99,8 @@
                 <Property Name="SessionItemId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Aufgabe" Type="Edm.Byte" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl1_fc" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
-                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="Operant_fc" sap:label="Operand" sap:quickinfo="Calculator Operant" sap:value-list="standard"/>
+                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="Operant_fc" sap:text="OperantText" sap:label="Operand" sap:quickinfo="Calculator Operant" sap:value-list="standard"/>
+                <Property Name="OperantText" Type="Edm.String" MaxLength="60"/>
                 <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="Zahl2_fc" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
                 <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:field-control="ResultIn_fc" sap:label="Result" sap:quickinfo="Calculator Resultat"/>
                 <Property Name="Checked" Type="Edm.Boolean" sap:label="Indicator" sap:quickinfo="General Flag" sap:creatable="false" sap:updatable="false"/>
@@ -115,6 +117,8 @@
                     <PropertyRef Name="SessionId"/>
                     <PropertyRef Name="ExcelId"/>
                 </Key>
+                <Property Name="actMigrateData_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="showFirstItem_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Attachment_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Filename_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Mimetype_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -123,9 +127,11 @@
                 <Property Name="to_YYExcelItem_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ExcelId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SessionText" Type="Edm.String" MaxLength="100" sap:label="Session" sap:quickinfo="Calulator Session Text"/>
                 <Property Name="Mimetype" Type="Edm.String" MaxLength="128" sap:field-control="Mimetype_fc" sap:label="Mime Type" sap:quickinfo="Excel Mime Type"/>
                 <Property Name="Filename" Type="Edm.String" MaxLength="128" sap:field-control="Filename_fc" sap:label="File Name" sap:quickinfo="Excel File Name"/>
-                <Property Name="FileStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="File status" sap:quickinfo="Calculator Excel File Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FileStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="FileStatusText" sap:label="File status" sap:quickinfo="Calculator Excel File Status" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="FileStatusText" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User" sap:creatable="false" sap:updatable="false"/>
@@ -145,12 +151,14 @@
                 <Property Name="SessionId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ExcelId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ExcelItemId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
-                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Operand" sap:quickinfo="Calculator Operant"/>
-                <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl"/>
-                <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Result" sap:quickinfo="Calculator Resultat"/>
-                <Property Name="Migrate" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Migration relevant" sap:quickinfo="Excel Migration relevant"/>
-                <Property Name="Migrated" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Migrated"/>
+                <Property Name="SessionText" Type="Edm.String" MaxLength="100" sap:label="Session" sap:quickinfo="Calulator Session Text"/>
+                <Property Name="FieldCritValue" Type="Edm.Int32"/>
+                <Property Name="Zahl1" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Operant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Operand" sap:quickinfo="Calculator Operant" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Zahl2" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Number" sap:quickinfo="Calculator Zahl" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ResultIn" Type="Edm.Decimal" Precision="13" Scale="2" sap:label="Result" sap:quickinfo="Calculator Resultat" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Migrate" Type="Edm.Boolean" sap:label="Migration relevant" sap:quickinfo="Excel Migration relevant"/>
+                <Property Name="Migrated" Type="Edm.Boolean" sap:label="Migrated" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreateAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User" sap:creatable="false" sap:updatable="false"/>
@@ -523,6 +531,9 @@
                 <FunctionImport Name="updateSucessfull" ReturnType="cds_ybits_tka_ui_calc_h.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.SessionV1Type" sap:applicable-path="updateSucessfull_ac">
                     <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                 </FunctionImport>
+                <FunctionImport Name="YYcreExcelHeader" ReturnType="cds_ybits_tka_ui_calc_h.SessionV1Type" EntitySet="SessionV1" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.SessionV1Type" sap:applicable-path="YYcreExcelHeader_ac">
+                    <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                </FunctionImport>
                 <FunctionImport Name="checkResult" ReturnType="cds_ybits_tka_ui_calc_h.AufgabenV1Type" EntitySet="AufgabenV1" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.AufgabenV1Type" sap:applicable-path="checkResult_ac">
                     <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="SessionItemId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
@@ -534,6 +545,14 @@
                 <FunctionImport Name="validateZahlenAct" ReturnType="cds_ybits_tka_ui_calc_h.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.AufgabenV1Type" sap:applicable-path="validateZahlenAct_ac">
                     <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="SessionItemId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="actMigrateData" ReturnType="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" EntitySet="YYExcelHeader" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" sap:applicable-path="actMigrateData_ac">
+                    <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="ExcelId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="showFirstItem" ReturnType="cds_ybits_tka_ui_calc_h.YYExcelItemType" EntitySet="YYExcelItem" m:HttpMethod="POST" sap:action-for="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" sap:applicable-path="showFirstItem_ac">
+                    <Parameter Name="SessionId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="ExcelId" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                 </FunctionImport>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
@@ -599,6 +618,17 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/YYcreExcelHeader" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Action_YYcreExcelHeader">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>_it/to_YYExcelHeader</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SideEffects" Qualifier="SAP__Determine_Action_validateZahlenAct">
                     <Record Type="Common.SideEffectsType">
@@ -607,6 +637,20 @@
                             <Collection>
                                 <PropertyPath>Zahl1</PropertyPath>
                                 <PropertyPath>Zahl2</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Field_Operant">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>Operant</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>OperantText</String>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -642,6 +686,62 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Field_Attachment">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>Attachment</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>FileStatus</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Field_FileStatus">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>FileStatus</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>FileStatusText</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.AcceptableMediaTypes">
+                    <Collection>
+                        <String>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</String>
+                        <String>application/vnd.ms-excel</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__core.ContentDisposition">
+                    <Record>
+                        <PropertyValue Property="Filename" Path="Filename"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" Path="Attachment_fc"/>
+                <Annotation Term="SAP__core.MediaType" Path="Mimetype"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/actMigrateData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SideEffects" Qualifier="SAP__Action_actMigrateData">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>_it/to_Session</NavigationPropertyPath>
+                                <NavigationPropertyPath>_it/to_Session/to_Aufgaben</NavigationPropertyPath>
+                                <NavigationPropertyPath>_it/to_YYExcelItem</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/Operant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -669,20 +769,61 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="SAP__core.AcceptableMediaTypes">
-                    <Collection>
-                        <String>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</String>
-                        <String>application/vnd.ms-excel</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__core.ContentDisposition">
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/FileStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Filename" Path="Filename"/>
+                        <PropertyValue Property="Label" String="File status"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ybits_domain_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FileStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomvalueL"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomeValueText"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="Constant" String="YBITS_TKA_CEFL_STATUS"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="Common.FieldControl" Path="Attachment_fc"/>
-                <Annotation Term="SAP__core.MediaType" Path="Mimetype"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/Operant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Operand"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ybits_domain_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Operant"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomvalueL"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomeValueText"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="Constant" String="ZBITS_TKA_CALC_OP"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
@@ -770,6 +911,7 @@
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_Aufgaben_oc</PropertyPath>
                                 <PropertyPath>to_YYExcelHeader_oc</PropertyPath>
+                                <PropertyPath>YYcreExcelHeader_ac</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -815,6 +957,7 @@
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_Aufgaben_oc</PropertyPath>
                                 <PropertyPath>to_YYExcelHeader_oc</PropertyPath>
+                                <PropertyPath>YYcreExcelHeader_ac</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -825,6 +968,8 @@
                     <Record>
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
+                                <PropertyPath>actMigrateData_ac</PropertyPath>
+                                <PropertyPath>showFirstItem_ac</PropertyPath>
                                 <PropertyPath>Attachment_fc</PropertyPath>
                                 <PropertyPath>Filename_fc</PropertyPath>
                                 <PropertyPath>Mimetype_fc</PropertyPath>
@@ -868,6 +1013,8 @@
                     <Record>
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
+                                <PropertyPath>actMigrateData_ac</PropertyPath>
+                                <PropertyPath>showFirstItem_ac</PropertyPath>
                                 <PropertyPath>Attachment_fc</PropertyPath>
                                 <PropertyPath>Filename_fc</PropertyPath>
                                 <PropertyPath>Mimetype_fc</PropertyPath>
@@ -930,6 +1077,26 @@
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Mimetype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.IsMediaType"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/SessionId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="YBTCALC"/>
+                <Annotation Term="Common.SemanticObjectMapping">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="LocalProperty" PropertyPath="SessionId"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/SessionId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="YBTCALC"/>
+                <Annotation Term="Common.SemanticObjectMapping">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="LocalProperty" PropertyPath="SessionId"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">

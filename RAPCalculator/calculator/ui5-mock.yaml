@@ -19,6 +19,7 @@ server:
           - path: /sap
             url: https://mmc-s4sap06.mmc.1stbasis.com:44300
             client: '280'
+            authenticationType: basic
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

@@ -95,17 +95,10 @@
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/to_YYExcelHeader_oc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type/YYcreExcelHeader_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.SessionV1Type">
-                <Annotation Term="UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="Administrative Data"/>
-                            <PropertyValue Property="ID" String="AdminDaten"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
@@ -127,6 +120,16 @@
                             <PropertyValue Property="Label" String="Footer"/>
                             <PropertyValue Property="ID" String="FOOTER"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FOOTER"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Administrative Data"/>
+                            <PropertyValue Property="ID" String="AdminDaten"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#AdminDaten"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -201,6 +204,11 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ProzentErfolgreich"/>
                         </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="New Excel upload"/>
+                            <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/YYcreExcelHeader"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.LineItem">
@@ -263,6 +271,9 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/SessionItemId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/OperantText">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.AufgabenV1Type/ChangedAt">
@@ -477,6 +488,9 @@
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/ExcelId">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/FileStatusText">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/CreateBy">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -484,6 +498,12 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/ChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/actMigrateData_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/showFirstItem_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelHeaderType/Attachment_fc">
@@ -530,6 +550,16 @@
                     <Record>
                         <PropertyValue Property="Data">
                             <Collection>
+                                <Record Type="UI.DataFieldForIntentBasedNavigation">
+                                    <PropertyValue Property="Label" String="Sow Session Application FG-MDE"/>
+                                    <PropertyValue Property="SemanticObject" String="YBTCALC"/>
+                                    <PropertyValue Property="Action" String="display"/>
+                                    <PropertyValue Property="RequiresContext" Bool="false"/>
+                                </Record>
+                                <Record Type="UI.DataFieldWithNavigationPath">
+                                    <PropertyValue Property="Value" Path="SessionText"/>
+                                    <PropertyValue Property="Target" NavigationPropertyPath="to_Session"/>
+                                </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value" Path="ChangedBy"/>
                                 </Record>
@@ -545,13 +575,13 @@
                         <PropertyValue Property="Data">
                             <Collection>
                                 <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="$value"/>
+                                    <PropertyValue Property="Value" Path="FileStatus"/>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value" Path="Filename"/>
                                 </Record>
                                 <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="FileStatus"/>
+                                    <PropertyValue Property="Value" Path="$value"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -569,22 +599,42 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="All Excel item migration"/>
+                            <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/actMigrateData"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Show first Item"/>
+                            <PropertyValue Property="Action" String="cds_ybits_tka_ui_calc_h.cds_ybits_tka_ui_calc_h_Entities/showFirstItem"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="$value"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Filename"/>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Show Session Application LI-CDS"/>
+                            <PropertyValue Property="SemanticObject" String="YBTCALC"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="FileStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Filename"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ChangedBy"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ChangeDatLocal"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="$value"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -601,13 +651,16 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/SessionId">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ExcelId">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/ExcelItemId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/SessionText">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/FieldCritValue">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_ybits_tka_ui_calc_h.YYExcelItemType/CreateBy">
@@ -674,10 +727,18 @@
                 </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
+                        <Record Type="UI.DataFieldWithIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Show Session Application LI-MDE(WITH)"/>
+                            <PropertyValue Property="SemanticObject" String="YBTCALC"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="Value" Path="SessionText"/>
+                        </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Migrate"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="FieldCritValue"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon"/>
                             <PropertyValue Property="Value" Path="Migrated"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -691,6 +752,12 @@
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ResultIn"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Show Session Application LI-MDE(FOR)"/>
+                            <PropertyValue Property="SemanticObject" String="YBTCALC"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="RequiresContext" Bool="true"/>
                         </Record>
                     </Collection>
                 </Annotation>
